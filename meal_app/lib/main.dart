@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meal_app/categories_screen.dart';
+import 'package:meal_app/category_item.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,34 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
+        accentColor: Colors.amber,
       ),
-      home: MyHomePage(),
+      home: CategoriesScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('DealiMeals'),
-
-      ),
-      body: Center(
-        child: Text("Navigation Time!"),
-
-      ),
-
-    );
-  }
-}
