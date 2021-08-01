@@ -50,9 +50,11 @@ class _TabScreenState extends State<TabScreen> {
             icon: Icon(
               Icons.category,
             ),
+
             title: Text(
               'Category',
             ),
+
           ),
           BottomNavigationBarItem(
             icon: Icon(
