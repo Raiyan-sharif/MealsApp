@@ -31,7 +31,7 @@ class MainDrawer extends StatelessWidget {
               size: 26,
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('/');
+              Navigator.of(context).pushReplacementNamed('/');
             },
             title: Text(
               'Meals',
@@ -47,7 +47,7 @@ class MainDrawer extends StatelessWidget {
               size: 26,
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(
+              Navigator.of(context).pushReplacementNamed(
                 FilterScreen.routeName,
               );
             },
