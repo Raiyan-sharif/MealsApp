@@ -6,7 +6,7 @@ class CategoryItem extends StatelessWidget {
   final String title;
   final Color color;
 
-  CategoryItem(this.id,this.title, this.color);
+  CategoryItem(this.id, this.title, this.color);
 
   void selectCategories(BuildContext ctx) {
     // Navigator.of(ctx).push(
@@ -16,7 +16,10 @@ class CategoryItem extends StatelessWidget {
     //     },
     //   ),
     // );
-    Navigator.of(ctx).pushNamed(CategoryMealsScreen.routeName, arguments: {'id':id,'title':title});
+    Navigator.of(ctx).pushNamed(CategoryMealsScreen.routeName, arguments: {
+      'id': id,
+      'title': title,
+    });
   }
 
   @override

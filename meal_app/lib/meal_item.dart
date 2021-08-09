@@ -9,6 +9,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   MealItem({
     required this.id,
@@ -17,26 +18,33 @@ class MealItem extends StatelessWidget {
     required this.duration,
     required this.complexity,
     required this.affordability,
+    required this.removeItem,
   });
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailsScreen.routeName,arguments: id);
+    Navigator.of(context).pushNamed(
+      MealDetailsScreen.routeName,
+      arguments: id,
+    ).then((value) => {
+
+      if (value != null){
+        removeItem(value)
+      }
+    });
   }
 
-  String get complexityText{
-    if(complexity == Complexity.Simple){
+  String get complexityText {
+    if (complexity == Complexity.Simple) {
       return 'Simple';
-    }
-    else if(complexity == Complexity.Challenging){
+    } else if (complexity == Complexity.Challenging) {
       return 'Challenging';
-    }
-    else{
+    } else {
       return 'Hard';
     }
   }
 
-  String get affordablityText{
-    switch(affordability){
+  String get affordablityText {
+    switch (affordability) {
       case Affordability.Affordable:
         return 'Affordable';
       case Affordability.Luxurious:
@@ -51,7 +59,7 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         selectMeal(context);
       },
       child: Card(
@@ -80,7 +88,7 @@ class MealItem extends StatelessWidget {
                   bottom: 20,
                   right: 10,
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 5,horizontal: 5),
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                     width: 300,
                     color: Colors.black54,
                     child: Text(
@@ -98,32 +106,38 @@ class MealItem extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.schedule),
-                        SizedBox(width: 6,),
-                        Text('${duration} min'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.work),
-                        SizedBox(width: 6,),
-                        Text('${complexityText}'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.attach_money),
-                        SizedBox(width: 6,),
-                        Text('${affordablityText}'),
-                      ],
-                    )
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.schedule),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text('${duration} min'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.work),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text('${complexityText}'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.attach_money),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text('${affordablityText}'),
+                    ],
+                  )
+                ],
+              ),
             ),
           ],
         ),
